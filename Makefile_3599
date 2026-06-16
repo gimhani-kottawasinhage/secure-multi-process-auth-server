@@ -1,0 +1,20 @@
+CC = gcc
+CFLAGS = -Wall -Wextra -Werror -O2
+LIBS = -lcrypto
+TARGET = server_3599
+SRC = server_3599.c
+
+all: $(TARGET)
+	@echo "Build complete: $(TARGET)"
+
+$(TARGET): $(SRC)
+	$(CC) $(CFLAGS) -o $(TARGET) $(SRC) $(LIBS)
+
+clean:
+	rm -f $(TARGET) *.log
+	@echo "Clean complete"
+
+run: $(TARGET)
+	./$(TARGET)
+
+.PHONY: all clean run
